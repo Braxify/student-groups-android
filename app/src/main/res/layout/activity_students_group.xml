@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".StudentsGroupActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="215dp"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:scaleType="fitXY"
+                android:src="@drawable/group" />
+
+            <TextView
+                android:id="@+id/grpNumberImageTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:text="Група"
+                android:textSize="@dimen/default_text_size" />
+
+            <TextView
+                android:id="@+id/facultyNameImageTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|start"
+                android:layout_marginTop="260dp"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:text="Факультет"
+                android:textAlignment="viewStart" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/grp_number_txt" />
+            />
+
+            <EditText
+                android:id="@+id/grpNumberEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/faculty_txt" />
+
+        <EditText
+            android:id="@+id/facultyEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="144dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp">
+
+                <TextView android:text="@string/edu_level_txt" />
+
+                <RadioGroup android:layout_height="62dp">
+
+                    <RadioButton
+                        android:id="@+id/edu_level_bachelor"
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:text="@string/edu_level_bachelor_txt" />
+
+                    <RadioButton
+                        android:id="@+id/edu_level_master"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:text="@string/edu_level_master_txt" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView android:text="@string/additional_flg_txt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/contract_flg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:text="@string/contract_flg_txt" />
+
+                    <CheckBox
+                        android:id="@+id/privilege_flg"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:text="@string/privilege_flg_txt" />
+                </LinearLayout>
+
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:onClick="onOkBtnClick"
+            android:text="@string/btn_ok_txt"
+            android:textSize="@dimen/default_text_size" />
+    </LinearLayout>
+</ScrollView>
