@@ -194,6 +194,17 @@
             app:layout_constraintTop_toBottomOf="@id/privilege_flg" />
 
         <Button
+            android:id="@+id/btnRem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDelete"
+            android:text="Х"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnOk"
+            app:layout_constraintStart_toEndOf="@id/btnStudList"
+            app:layout_constraintTop_toTopOf="@id/btnStudList" />
+
+        <Button
             android:id="@+id/btnStudList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

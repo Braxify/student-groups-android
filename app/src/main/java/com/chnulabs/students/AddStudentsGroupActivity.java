@@ -1,12 +1,16 @@
 package com.chnulabs.students;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-
-import android.content.Intent;
+import android.content.ContentValues;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 public class AddStudentsGroupActivity extends AppCompatActivity {
 
@@ -19,12 +23,24 @@ public class AddStudentsGroupActivity extends AppCompatActivity {
     public void onGrpAddClick(View view) {
         EditText number = (EditText) findViewById(R.id.addGroupNumber);
         EditText faculty = (EditText) findViewById(R.id.addFaculty);
-        StudentsGroup.addGroup(
-                new StudentsGroup(number.getText().toString(),
-                        faculty.getText().toString(),
-                        0, false, false)
-        );
-        NavUtils.navigateUpFromSameTask(this);
 
+        SQLiteOpenHelper sqliteHelper = new StudentsDatabaseHelper(this);
+        try {
+            SQLiteDatabase db = sqliteHelper.getReadableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("number", number.getText().toString());
+            contentValues.put("facultyName", faculty.getText().toString());
+            contentValues.put("educationLevel", 0);
+            contentValues.put("contractExistsFlg", 0);
+            contentValues.put("privilageExistsFlg", 0);
+            db.insert("Groups", null, contentValues);
+            db.close();
+            NavUtils.navigateUpFromSameTask(this);
+        } catch (SQLException e) {
+            Toast toast = Toast.makeText(this,
+                    "Database unavailable",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }
